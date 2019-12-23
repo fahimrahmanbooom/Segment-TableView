@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var currentTableView: Int = 0
+    var currentTableView: Int?
     
     var data = [
     [
@@ -53,14 +53,14 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return data[currentTableView].count
+        return data[currentTableView ?? 0].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell: TableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCell
      
-        cell.label.text = data[currentTableView][indexPath.row]
+        cell.label.text = data[currentTableView ?? 0][indexPath.row]
         
         return cell
     }
